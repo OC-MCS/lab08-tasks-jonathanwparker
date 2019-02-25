@@ -15,6 +15,31 @@ IntegerList::IntegerList(int size)
       list[ndx] = 0;
 }
 
+IntegerList::IntegerList(IntegerList &a)
+{
+	list = new int[a.numElements];
+	numElements = a.numElements;
+	for (int i = 0; i < a.numElements; i++)
+	{
+		list[i] = a.list[i];
+	}
+
+}
+IntegerList::~IntegerList()
+{
+	delete[] list;
+}
+IntegerList IntegerList::operator=(IntegerList a)
+{
+	IntegerList b(a.numElements);
+	b.list = new int[a.numElements];
+	b.numElements = a.numElements;
+	for (int i = 0; i < a.numElements; i++)
+	{
+		list[i] = a.list[i];
+	}
+	return b;
+}
 
 //***********************************************************
 // isValid member function.                                 *
